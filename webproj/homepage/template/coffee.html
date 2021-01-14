@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Coffee List</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <style>
+            .btn {
+            background-color: DodgerBlue;
+            border: none;
+            color: white;
+            padding: 5px 8px;
+            font-size: 14px;
+            cursor: pointer;
+            margin: 0px 2px;
+            }
+            
+            /* Darker background on mouse-over */
+            .btn:hover {
+            background-color: RoyalBlue;
+            }
+        </style>
+        <script>
+            function onclick_edit(){
+                tr = event.target.parentElement;
+                while(tr.nodeName != 'TR'){
+                    tr = tr.parentElement;
+                }
+                td = tr.children;
+                td[0].innerHTML = "<input type='text' name='name' value='"+td[0].innerHTML+"'/>";
+                td[1].innerHTML = "<input type='number' name='price' value='"+td[1].innerHTML+"'/>";
+                td[3].innerHTML = "<input type='number' name='stock' value='"+td[3].innerHTML+"'/>";
+                td[4].innerHTML = "<button class='btn' onclick='onclick_confirm();'><i class='fas fa-check'></i></button>";   
+            }
+            function onclick_confirm(){
+                tr = event.target.parentElement;
+                while(tr.nodeName != 'TR'){
+                    tr = tr.parentElement;
+                }
+                td = tr.children;
+                var form = document.createElement("form");
+                form.setAttribute("method","post");
+                form.innerHTML += '{% csrf_token %}';
+                form.innerHTML += "<input type='number' name='id' value='"+tr.id+"'/>";
+                form.innerHTML += "<input type='text' name='name' value='"+ td[0].children[0].value+"'/>";
+                form.innerHTML += "<input type='number' name='price' value='"+td[1].children[0].value+"'/>";
+                form.innerHTML += "<input type='text' name='is_ice' value='"+td[2].children[0].checked+"'/>";
+                form.innerHTML += "<input type='number' name='stock' value='"+td[3].children[0].value+"'/>";
+                form.innerHTML += "<input type='hidden' name='_method' value='put'>";
+                document.body.appendChild(form);
+                form.submit()
+            }
+
+            function onclick_delete(){
+                tr = event.target.parentElement;
+                while(tr.nodeName != 'TR'){
+                    tr = tr.parentElement;
+                }
+                td = tr.children;
+                var form = document.createElement("form");
+                form.setAttribute("method","post");
+                form.innerHTML += '{% csrf_token %}';
+                form.innerHTML += "<input type='number' name='id' value='"+ tr.id+"'/>";
+                form.innerHTML += "<input type='hidden' name='_method' value='delete'>";
+                document.body.appendChild(form);
+                form.submit()
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>My Coffe List</h2>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Is Ice</th>
+                    <th>Stock</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for coffee in coffee_list %}
+                    <tr id={{ coffee.id }}>  
+                        <td>{{ coffee.name }}</td>    
+                        <td>{{ coffee.price }}</td>
+                        <td><input type="checkbox" name="is_ice" {% if coffee.is_ice %} checked {% endif %}></td>
+                        <td>{{ coffee.stock }}</td>
+                        <td><button class="btn" onclick="onclick_edit({{ coffee.id }});"><i class="fa fa-pen"></i><button class="btn" onclick="onclick_delete({{ coffee.id }});"><i class="fa fa-trash"></i></button></button></td>    
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>    
+        </div>
+        <form method="POST">{% csrf_token %}
+            {{ coffee_form.as_p}}
+            <input type="hidden" name="_method" value="post">
+            <button type="submit" class="btn">Save</button>
+        </form>
+    </body>
+</html>

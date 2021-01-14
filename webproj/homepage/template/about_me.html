@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About du-du-zi</title>
+  <link href="{% static 'css/sequence-theme.mono.css' %}" rel="stylesheet" media="all">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="sequence" class="seq">
+    <ul class="seq-canvas">
+
+      <li class="seq-step1 seq-valign seq-in">
+        <div class="seq-vcenter">
+          <h2 data-seq class="seq-title">안녕하세요 저는 <span class="font-highlight">du-du-zi</span>입니다.<span style='font-size:35px;'>&#128075;</span></h2>
+        </div>
+      </li>
+
+      <li class="seq-step2 seq-valign">
+        <div class="seq-vcenter">
+          <img data-seq class="seq-feature" src="{% static 'images/image2.png' %}" srcset="{% static 'images/image2.png' %} 1x, {% static 'images/image2.png' %} 1x" />
+          <h2 data-seq class="seq-title">저는 인공지능 무식자이지만,<br/>인공지능에 대해 배우고 싶어 <span class="font-highlight">KDT</span> 과정에 지원하게 되었습니다.</h2>
+        </div>
+      </li>
+
+      <li class="seq-step3 seq-valign">
+        <div class="seq-vcenter">
+          <img data-seq class="seq-feature" src="{% static 'images/image3.png' %}" width="350" height="300" srcset="{% static 'images/image3.png' %} 1x, {% static 'images/image3.png' %} 0.5x" />
+          <h2 data-seq class="seq-title">열심히 노력해서<br/><span style='font-size:25px;'>&#10024;</span><span class="font-highlight">세상에 이로운 서비스</span><span style='font-size:25px;'>&#10024;</span>를 만드는 것이<br/>저의 꿈입니다.<br/><br/>감사합니다<span style='font-size:35px;'>&#128583;</span></h2>
+        </div>
+      </li>
+    </ul>
+
+    <fieldset class="seq-nav" aria-label="Slider buttons" aria-controls="sequence">
+
+      <button type="button" class="seq-prev" aria-label="Previous">
+        <img src="{% static 'images/prev.svg' %}" alt="Previous" />
+      </button>
+
+      <ul role="navigation" aria-label="Pagination" class="seq-pagination">
+        <li class="seq-current">
+          <a href="#step1" rel="step1" title="Go to bananas">
+            <img src="{% static 'images/otter_lg.png' %}" alt="Bananas" width="50" />
+          </a>
+        </li>
+        <li>
+          <a href="#step2" rel="step2" title="Go to coconut">
+            <img src="{% static 'images/otter_lg.png' %}" alt="Coconut" width="50" />
+          </a>
+        </li>
+        <li>
+          <a href="#step3" rel="step3" title="Go to orange">
+            <img src="{% static 'images/otter_lg.png' %}" alt="Orange" width="50" />
+          </a>
+        </li>
+      </ul>
+
+      <button type="button" class="seq-next" aria-label="Next">
+        <img src="{% static 'images/next.svg' %}" alt="Next" />
+      </button>
+
+    </fieldset>
+  </div>
+More script and css style
+: <a href="http://www.htmldrive.net/" title="HTML DRIVE - Free DHMTL Scripts,Jquery plugins,Javascript,CSS,CSS3,Html5 Library">www.htmldrive.net </a>
+
+  <script src="{% static 'scripts/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'scripts/hammer.min.js' %}"></script>
+  <script src="{% static 'scripts/sequence.min.js' %}"></script>
+  <script src="{% static 'scripts/sequence-theme.mono.js' %}"></script>
+</body>
+</html>

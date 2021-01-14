@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>du-du-zi EDA</title>
+  <link href="{% static 'css/sequence-theme.mono.css' %}" rel="stylesheet" media="all">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="sequence" class="seq">
+    <ul class="seq-canvas">
+
+      <li class="seq-step1 seq-valign seq-in">
+        <div class="seq-vcenter">
+          <h2 data-seq class="seq-title">'버거지수'<span style='font-size:35px;'>&#127828;</span>란,<br/>한 도시의 발전 수준을<br/><span class="font-highlight">(버거킹의 갯수+맥도날드의 갯수+KFC의 갯수)/롯데리아의 갯수</span>로<br/>보여주는 것입니다.
+          <br/><br/>
+          프랜차이즈 매장수를 분석하여<br/>도시의 발전을 보여준다는 것이 흥미로워<br/>과제 주제로 선정했고,<br/>
+          커피 프렌차이즈 데이터를 통해 <span class="font-highlight">'커피지수'<span style='font-size:25px;'>&#9749;</span></span>를 만드는 것이<br/>이번 <span class="font-highlight">EDA</span>의 목표입니다.
+          </h2>
+        </div>
+      </li>
+
+      <li class="seq-step2 seq-valign">
+        <div class="seq-vcenter">
+          <h2 data-seq class="seq-title">사용한 데이터는,<br/>우리나라 공공데이터 포탈의 <span class="font-highlight">'소상공인시장진흥공단_상가(상권)정보(2016)'</span>와
+            <br/>이투데이의 <span class="font-highlight">'전국 커피 프렌차이즈 가격표(2019)'</span>를 활용하였습니다.
+            <br/><br/>
+            커피가격은 아메리카노를 기준으로
+            <br/>
+            <span class="font-highlight">'빽다방'</span>이 1500원으로 가장 저렴했으며,
+            <br/>
+            <span class="font-highlight">'커피빈'</span>이 4800원으로 가장 고가였습니다.
+            <br/><br/>
+            매장수는 <span class="font-highlight">'이디야커피'</span>가 1위였고, 2위는 <span class="font-highlight">'스타벅스'</span>였습니다.<br/>
+            그리고 수도권 지역에 밀집되어 있는 프렌차이즈는 <span class="font-highlight">'폴바셋'</span>이였습니다.   
+          </h2>
+          </div>
+      </li>
+
+      <li class="seq-step3 seq-valign">
+        <div class="seq-vcenter">
+          <h2 data-seq class="seq-title">이 정보를 통해 설정한 <span class="font-highlight">'커피지수'</span>는 다음과 같습니다.
+          </h2>
+          <img data-seq class="seq-feature" src="{% static 'images/coffee.png' %}" width="350" height="300" srcset="{% static 'images/coffee.png' %} 1x, {% static 'images/coffee.png' %} 0.5x" />
+          <h2 data-seq class="seq-title"><span class="font-highlight">
+            (스타벅스의 갯수 + 폴바셋의 갯수 + 커피빈의 갯수) / (빽다방의 갯수 + 이디야의 갯수)</span>
+            <br/><span style='font-size:0.7em;'>(단, 총 매장수가 10개 미만이면 커피지수는 0)</span>
+          </h2>
+        </div>
+      </li>
+
+      <li class="seq-step4 seq-valign">
+        <div class="seq-vcenter">
+          <h2 data-seq class="seq-title">
+            이 <span class="font-highlight">'커피지수'</span>를 지도로 표현하면 다음과 같습니다.
+
+          </h2>
+          <img data-seq class="seq-feature" src="{% static 'images/coffee_map.png' %}" width="350" height="300" srcset="{% static 'images/coffee_map.png' %} 1x, {% static 'images/coffee_map.png' %} 0.5x" />
+          <h2 data-seq class="seq-title">
+            도시의 발전 정도와 일치해 보이나요?
+          </h2>
+        </div>
+      </li>
+
+      <li class="seq-step5 seq-valign">
+        <div class="seq-vcenter">
+          <h2 data-seq class="seq-title">
+            <span style='font-size:25px;'>&#10024;</span><span class="font-highlight">마무리</span><span style='font-size:25px;'>&#10024;</span><br/>
+            <br/>
+            국토교통부의 쇠퇴진단지표시군구(2016) 자료를 통해<br/>
+            커피지수를 검증해보고 싶었는데<br/>
+            도메인과 실력이 부족하여 못했습니다.<br/>
+            
+            <br/>
+            실력을 키워서 다음부턴<br/>
+            검증 분석까지 할 수 있을 정도로 성장해야겠습니다.
+
+            <br/><br/><span class="font-highlight">감사합니다</span><span style='font-size:35px;'>&#128583;</span>
+          </h2>
+        </div>
+      </li>
+
+    </ul>
+
+    <fieldset class="seq-nav" aria-label="Slider buttons" aria-controls="sequence">
+
+      <button type="button" class="seq-prev" aria-label="Previous">
+        <img src="{% static 'images/prev.svg' %}" alt="Previous" />
+      </button>
+
+      <ul role="navigation" aria-label="Pagination" class="seq-pagination">
+        <li class="seq-current">
+          <a href="#step1" rel="step1" title="Go to bananas">
+            <img src="{% static 'images/otter_lg.png' %}" alt="Bananas" width="50" />
+          </a>
+        </li>
+        <li>
+          <a href="#step2" rel="step2" title="Go to coconut">
+            <img src="{% static 'images/otter_lg.png' %}" alt="Coconut" width="50" />
+          </a>
+        </li>
+        <li>
+          <a href="#step3" rel="step3" title="Go to orange">
+            <img src="{% static 'images/otter_lg.png' %}" alt="Orange" width="50" />
+          </a>
+        </li>
+
+        <li>
+          <a href="#step4" rel="step4" title="Go to orange">
+            <img src="{% static 'images/otter_lg.png' %}" alt="Orange" width="50" />
+          </a>
+        </li>
+
+        <li>
+          <a href="#step5" rel="step4" title="Go to orange">
+            <img src="{% static 'images/otter_lg.png' %}" alt="Orange" width="50" />
+          </a>
+        </li>
+      </ul>
+
+      <button type="button" class="seq-next" aria-label="Next">
+        <img src="{% static 'images/next.svg' %}" alt="Next" />
+      </button>
+
+    </fieldset>
+  </div>
+More script and css style
+: <a href="http://www.htmldrive.net/" title="HTML DRIVE - Free DHMTL Scripts,Jquery plugins,Javascript,CSS,CSS3,Html5 Library">www.htmldrive.net </a>
+
+  <script src="{% static 'scripts/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'scripts/hammer.min.js' %}"></script>
+  <script src="{% static 'scripts/sequence.min.js' %}"></script>
+  <script src="{% static 'scripts/sequence-theme.mono.js' %}"></script>
+</body>
+</html>
